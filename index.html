@@ -5,8 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week Planner</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="page-container">
+    <div id="invisible-row">
+      <div class="invisible-col">
+        <form class="entryform">
+        <h2 class="small-title">Add Entry</h2>
+        <select name="day" id="day" required>
+          <option value="day" selected>Day of Week</option>
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
+          <option value="saturday">Saturday</option>
+          <option value="sunday">Sunday</option>
+        </select>
+        <select name="time" id="time" required>
+          <option value="time" selected>Time</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <select name="ampm" id="ampm" required>
+          <option value="ampm" selected>AM/ PM</option>
+          <option value="am">AM</option>
+          <option value="pm">PM</option>
+        </select>
+        <textarea placeholder="Description" required></textarea>
+        <button type="submit" id="save">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="full-col">
+        <h1 class="title">Weekly Planner</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="full-spaced-col">
+        <button class="button-style" id="addEntry" type="button">Add Entry</button>
+      </div>
+    </div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
