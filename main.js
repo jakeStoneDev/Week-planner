@@ -1,13 +1,49 @@
-var addEntry = document.getElementById('addEntry');
-var invisRow = document.getElementById('invisible-row');
-var saveButton = document.getElementById('save');
+/* Data */
+var data = {
+  events: [],
+  editing: null,
+  nextEntryId: 1
+};
 
-addEntry.addEventListener('click', function (event) {
-  invisRow.style.visibility = 'visible';
+var savedData;
+var savedDataJSON = localStorage.getItem('javascript-local-storage');
+/* getting previous entry ID and incrementing */
+if (savedDataJSON !== null) {
+  savedData = JSON.parse(savedDataJSON);
+  data.nextEntryId = savedData.nextEntryId;
+}
+
+/* main */
+var addEvent = document.getElementById('addEntry');
+var eventForm = document.getElementById('invisible-row');
+
+addEvent.addEventListener('click', function (event) {
+  eventForm.style.visibility = 'visible';
 });
 
-saveButton.addEventListener('click', function (event) {
+var form = document.getElementById('formId');
+function handleSubmit(event) {
   event.preventDefault();
-  invisRow.style.visibility = 'hidden';
-})
-;
+  var newEvent = {
+    day: '',
+    time: '',
+    description: '',
+    eventId: ''
+  };
+
+  newEvent.day = form.day.value;
+  newEvent.time = form.time.value;
+  newEvent.description = form.textarea.value;
+  newEvent.eventId = data.nextEntryId;
+
+  data.nextEntryId++;
+  data.events.unshift(newEvent);
+
+  var saveInputJSON = JSON.stringify(data);
+  localStorage.setItem('javascript-local-storage', saveInputJSON);
+
+  eventForm.style.visibility = 'hidden';
+  form.reset();
+}
+
+form.addEventListener('submit', handleSubmit);
