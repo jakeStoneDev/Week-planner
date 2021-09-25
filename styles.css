@@ -128,3 +128,15 @@ button[type='submit']:hover {
   display: flex;
   justify-content: center;
 }
+
+.row.days {
+  width: 100%;
+}
+
+.one-day {
+  display: flex;
+  border: 1px solid black;
+  width: calc(100% / 7);
+  height: 100px;
+  margin: 10px;
+}

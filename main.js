@@ -34,9 +34,13 @@ function handleSubmit(event) {
   newEvent.day = form.day.value;
   newEvent.time = form.time.value;
   newEvent.description = form.textarea.value;
-  newEvent.eventId = data.nextEntryId;
 
+  if (data.events.length === 0) {
+    data.nextEntryId = 1;
+  }
+  newEvent.eventId = data.nextEntryId;
   data.nextEntryId++;
+
   data.events.unshift(newEvent);
 
   var saveInputJSON = JSON.stringify(data);
